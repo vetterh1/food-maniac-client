@@ -6,3 +6,4 @@ dist
 distBoServer
 distFoServer
 server/static_dev
+.DS_Store

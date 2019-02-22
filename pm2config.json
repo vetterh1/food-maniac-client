@@ -8,7 +8,7 @@
     // First application
     {
       "name"      : "boServer",
-      "script"    : "/home/lve/workspace/mapTest/distBoServer/boServer.js",
+      "script"    : "/home/lve/workspace/food-maniac-client/distBoServer/boServer.js",
       "env": {
         "NODE_ENV": "development",
         "SERVER_NAME": "BoServer"
@@ -22,7 +22,7 @@
     // Second application
     {
       "name"      : "foServer",
-      "script"    : "/home/lve/workspace/mapTest/distFoServer/foServer.js",
+      "script"    : "/home/lve/workspace/food-maniac-client/distFoServer/foServer.js",
       "env": {
         "NODE_ENV": "development",
         "SERVER_NAME": "FoServer"

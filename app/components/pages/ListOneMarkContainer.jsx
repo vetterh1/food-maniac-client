@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import Alert from 'react-s-alert';
 import ListOneMark from './ListOneMark';
 
-
 const logListOneMarkContainer = log.getLogger('logListOneMarkContainer');
 logListOneMarkContainer.setLevel('debug');
 logListOneMarkContainer.debug('--> entering ListOneMarkContainer.jsx');
@@ -73,7 +72,7 @@ export default class ListOneMarkContainer extends React.Component {
       logListOneMarkContainer.warn('{ ListOneMarkContainer.FindIndividualMarks');
       // logSearchItemContainer.warn(`SearchItemContainer.FindIndividualMarks - this.props.coordinates:\n\n${stringifyOnce(this.props.coordinates, null, 2)}`);
 
-      fetch(`/api/markIndividuals/markAggregateId/${this.props.markAggregate._id}`)
+      fetch(`${process.env.HOST}/api/markIndividuals/markAggregateId/${this.props.markAggregate._id}`)
       .then((response) => {
         if (response.status >= 400) {
           this.onEndSearchingFailed(response.status);

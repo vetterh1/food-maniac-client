@@ -12,28 +12,11 @@
       "port": 8080
     }
   },
-
-  "storage":
-  {
-    "database":
-    {
-  		"URL_old_local" : "mongodb://localhost:27017/food_maniac_dev",
-  		"URL_distant_non_secure" : "mongodb://51.254.221.25:27018/food_maniac",
-  		"URL_new_but_not_working_with_worldline" : "mongodb://food:maniac@51.254.221.25:27018/food_maniac",
-      "URL" : "mongodb://localhost:27017/food_maniac_dev",
-      "ssl_mode" : false
-    },
-    "static": "/static_dev"
-  },
   
   "log":
   {
     "levelConsole": "debug",
     "levelFile": "debug",
-    "BoServer":
-    {
-        "pathFile" : "./server/log/winstonBo.log"
-    },
     "FoServer":
     {
         "pathFile" : "./server/log/winstonFo.log"

@@ -17,7 +17,7 @@ function errorRequestingCategories(message) { return { type: c.ERROR_REQUESTING_
 export function fetchCategories() { // eslint-disable-line import/prefer-default-export
   return (dispatch) => {
     dispatch(requestCategories()); // advertise we are starting a server request
-    return fetch('/api/categories')
+    return fetch(`${process.env.HOST}/api/categories`)
       .then(response => response.json())
       .then(json => dispatch(receiveCategories(json)))
       .catch(error => dispatch(errorRequestingCategories(error.message)));

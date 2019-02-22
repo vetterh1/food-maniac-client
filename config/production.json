@@ -13,28 +13,10 @@
     }
 	},
 
-  "storage":
-  {
-  	"database":
-  	{
-  		"URL_old_local" : "mongodb://localhost:27017/food_maniac",
-  		"URL_distant_non_secure" : "mongodb://51.254.221.25:27017/food_maniac",
-      "URL" : "mongodb://food:maniac@51.254.221.25:27017/food_maniac",
-      "sslMode" : true,
-      "sslKeyPath" : "/etc/ssl/mongodb.pem",
-      "sslCertPath" : "/etc/ssl/mongodb-cert.crt"
-  	},
-    "static": "/static"
-  },
-
 	"log":
 	{
 		"levelConsole": "debug",
 		"levelFile": "debug",
-    "BoServer":
-    {
-      "pathFile" : "./distBoServer/log/winston.log"
-    },
     "FoServer":
     {
       "pathFile" : "./distFoServer/log/winston.log"

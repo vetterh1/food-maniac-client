@@ -13,7 +13,7 @@ function _errorRequestingItems(message) { return { type: c.ERROR_REQUESTING_ITEM
 export function fetchItems() { // eslint-disable-line import/prefer-default-export
   return (dispatch) => {
     dispatch(_requestItems()); // advertise we are starting a server request
-    return fetch('/api/items')
+    return fetch(`${process.env.HOST}/api/items`)
       .then(response => response.json())
       .then(json => dispatch(_receiveItems(json)))
       .catch(error => dispatch(_errorRequestingItems(error.message)));
@@ -33,7 +33,7 @@ export function saveItem(item) { // eslint-disable-line import/prefer-default-ex
   return (dispatch) => {
     dispatch(_requestSaveItem()); // advertise we are starting a server request
     console.log('Action saveItem() - item:', item);
-    return fetch('/api/items', {
+    return fetch(`${process.env.HOST}/api/items`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ export function updateItem(id, updates) { // eslint-disable-line import/prefer-d
   return (dispatch) => {
     dispatch(_requestUpdateItem()); // advertise we are starting a server request
     console.log('Action updateItem() - item:', id, JSON.stringify({ item: updates }, null, 4));
-    return fetch(`/api/items/id/${id}`, {
+    return fetch(`${process.env.HOST}/api/items/id/${id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ export function backupOrphans(id, backupItemId) { // eslint-disable-line import/
   return (dispatch) => {
     dispatch(_requestBackupingOrphans()); // advertise we are starting a server request
     console.log('Action backupOrphans() - id, backupItemId:', id, backupItemId);
-    return fetch(`/api/markAggregates/bulkUpdates?conditions={"item": "${id}"}&changes={"$set":{"item":"${backupItemId}"}}`, {
+    return fetch(`${process.env.HOST}/api/markAggregates/bulkUpdates?conditions={"item": "${id}"}&changes={"$set":{"item":"${backupItemId}"}}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ export function deleteItem(id, backupItemId) { // eslint-disable-line import/pre
   return (dispatch) => {
     dispatch(_requestDeleteItem()); // advertise we are starting a server request
     console.log('Action deleteItem() - item, backupItemId:', id, backupItemId);
-    return fetch(`/api/items/id/${id}`, {
+    return fetch(`${process.env.HOST}/api/items/id/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

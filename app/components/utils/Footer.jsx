@@ -66,10 +66,10 @@ class Footer extends React.Component {
                   Hostname: {hostname} / Host (from server): {process.env.HOST} / Port (from server): {process.env.PORT}
                 </Col>
                 <Col xs={12} className="">
-                  <a href="/logs/show?limit=200&level=1&minutes=30" target="_blank" rel="noopener noreferrer">Error logs</a>
+                  <a href={process.env.HOST + "/logs/show?limit=200&level=1&minutes=30"} target="_blank" rel="noopener noreferrer">Error logs</a>
                 </Col>
                 <Col xs={12} className="">
-                  <a href="/logs/show?limit=1000&level=5&minutes=1" target="_blank" rel="noopener noreferrer">Full logs (1mn)</a>
+                  <a href={process.env.HOST + "/logs/show?limit=1000&level=5&minutes=1"} target="_blank" rel="noopener noreferrer">Full logs (1mn)</a>
                 </Col>
                 <Col xs={12} className="">
                   <a onClick={this.startServerLogging.bind(this)} role="button">Start logging to server (1mn)</a>

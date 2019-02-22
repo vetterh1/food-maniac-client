@@ -18,7 +18,7 @@ function errorRequestingKinds(message) { return { type: c.ERROR_REQUESTING_KINDS
 export function fetchKinds() { // eslint-disable-line import/prefer-default-export
   return (dispatch) => {
     dispatch(requestKinds()); // advertise we are starting a server request
-    return fetch('/api/kinds')
+    return fetch(`${process.env.HOST}/api/kinds`)
       .then(response => response.json())
       .then(json => dispatch(receiveKinds(json)))
       .catch(error => dispatch(errorRequestingKinds(error.message)));

@@ -122,7 +122,7 @@ class SearchItemContainer extends React.Component {
       // logSearchItemContainer.warn(`SearchItemContainer.FindMarks - this.props.coordinates:\n\n${stringifyOnce(this.props.coordinates, null, 2)}`);
 
       const item = this.values.item ? this.values.item : 'all';
-      fetch(`/api/markAggregates/itemId/${item}/maxDistance/${this.values.distance}/lat/${this.props.coordinates.latitude}/lng/${this.props.coordinates.longitude}`)
+      fetch(`${process.env.HOST}/api/markAggregates/itemId/${item}/maxDistance/${this.values.distance}/lat/${this.props.coordinates.latitude}/lng/${this.props.coordinates.longitude}`)
       .then((response) => {
         if (response.status >= 400) {
           this.onEndSearchingFailed(response.status);

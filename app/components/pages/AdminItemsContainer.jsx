@@ -129,7 +129,7 @@ class AdminItemsContainer extends React.Component {
     // Retreive the number of aggregate marks associated with this item
     // async method --> change the state only when answer received
     // (that state change will display the modal)
-    fetch(`${process.env.HOST}/api/markAggregates/count?conditions={"item":"${currentItem.id}"}`)
+    fetch(`${process.env.GATEWAY}/api/markAggregates/count?conditions={"item":"${currentItem.id}"}`)
       .then(response => response.json())
       .then(json => this.setState({ modalEditItemOpened: true, currentItem, currentKind, currentCategory, currentNbAggregateMarks: json.count }))
       .catch(() => this.setState({ modalEditItemOpened: true, currentItem, currentKind, currentCategory, currentNbAggregateMarks: -1 }));

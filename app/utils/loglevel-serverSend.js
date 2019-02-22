@@ -51,7 +51,7 @@ export const loglevelServerSend = (logger, options) => {
   // console.log('loglevelServerSend');
   if (!logger || !logger.methodFactory) throw new Error('loglevel instance has to be specified in order to be extended');
   const _logger = logger;
-  const _url = (options && options.url) || `${process.env.HOST}/logs/save`;
+  const _url = (options && options.url) || `${process.env.GATEWAY}/logs/save`;
   const _callOriginal = (options && options.callOriginal) || true;
   const _prefix = (options && options.prefix) || ((logSev, message) => { return `${new Date().toLocaleString()} - ${logSev}: ${message}\n`; });
   const _level = options && options.level;

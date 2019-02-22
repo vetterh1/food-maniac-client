@@ -40,7 +40,7 @@ class CheckoutContainer extends React.Component {
     this.setState({ editMode: false, amount: data.amount, orderId: data.orderId });
 
     // Call Server to get the hash
-    fetch(`${process.env.HOST}/util/computeHash`, {
+    fetch(`${process.env.GATEWAY}/util/computeHash`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

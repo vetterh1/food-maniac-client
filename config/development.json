@@ -1,16 +1,11 @@
 {
 	"server":
 	{
-    "BoServer":
-    {
-      "host": "http://localhost:8085",
-      "port": 8085
-    },
-    "FoServer":
-    {
-      "host": "http://localhost:8080",
-      "port": 8080
-    }
+    "gateway":"https://food-maniac.com",
+    "gateway_prod":"https://food-maniac.com",
+    "gateway_local":"http://localhost:8080",
+
+    "server_port": 8080
 	},
   
   "log":

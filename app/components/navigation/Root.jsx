@@ -3,7 +3,7 @@
 import * as log from 'loglevel';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect, Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import { Router, Route } from 'react-router-dom';
 // Older solution: Import bootstrap directly from cdn in index.html. no need for npm install bootstrap either!
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -64,25 +64,20 @@ class Root extends React.Component {
   render() {
     if (!this.props.languageInfo) return null;
     return (
-      <Provider
-        store={this.props.store}
+      <IntlProvider
+        locale={this.state.locale}
+        messages={this.state.messages}
       >
-        <IntlProvider
-          locale={this.state.locale}
-          messages={this.state.messages}
-        >
-          <Router history={history}>
-            <Route path="/" component={props => <App {...props} />} />
-          </Router>
-        </IntlProvider>
-      </Provider>
+        <Router history={history}>
+          <Route path="/" component={props => <App {...props} />} />
+        </Router>
+      </IntlProvider>
     );
   }
 }
 
 
 Root.propTypes = {
-  store: PropTypes.object.isRequired,
   languageInfo: PropTypes.object.isRequired,
 };
 

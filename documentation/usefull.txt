@@ -9,11 +9,7 @@ Base: MERN-STARTER
 // For upgrading npm packages:
 install npm-check-update, then run:
 ncu -u
-ncu -u -a -x react-router,react-router-transition
 
-// Versions to keep (NO update):
- react-router               3.0.5
- react-router-transition    0.0.6
 
 // List npm packages (global & project)
 npm list -g --depth=0

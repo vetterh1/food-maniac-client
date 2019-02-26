@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
@@ -97,5 +98,7 @@ store.dispatch(setupLanguages(languagesList, defaultLanguage));
 
 ensureIntlSupport().then(
   render(
-    <Root store={store} />,
+    <Provider store={store}>
+      <Root />
+    </Provider>,
     document.getElementById('app')));

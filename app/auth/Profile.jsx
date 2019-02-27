@@ -24,7 +24,7 @@ class Profile extends React.Component {
     const name = profile.given_name || profile.nickname || profile.name;
     return (
       <div>
-        <h4><img src={profile.picture} alt="profile" style={{ maxWidth: '45px' }} /> {name}</h4>
+        <h4><img src={profile.picture} alt="profile" style={{ maxWidth: '45px', marginRight: '15px' }} /> {name}</h4>
         <pre>{JSON.stringify(profile, null, 2)}</pre>
       </div>
     );

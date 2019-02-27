@@ -21,13 +21,14 @@ class LoginBanner extends React.Component {
   render() {
     const { isAuthenticated } = this.props.auth;
     if (isAuthenticated()) {
-      return (
-        <div className="jumbotron">
-          <div className="container">
-            <Profile auth={this.props.auth} />
-          </div>
-        </div>
-      );
+      return null;
+      // return (
+      //   <div className="jumbotron">
+      //     <div className="container">
+      //       <Profile auth={this.props.auth} />
+      //     </div>
+      //   </div>
+      // );
     }
     return (
       <div className="jumbotron">

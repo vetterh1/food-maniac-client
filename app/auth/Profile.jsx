@@ -25,7 +25,6 @@ class Profile extends React.Component {
     return (
       <div>
         <h4><img src={profile.picture} alt="profile" style={{ maxWidth: '45px', marginRight: '15px' }} /> {name}</h4>
-        <pre>{JSON.stringify(profile, null, 2)}</pre>
       </div>
     );
   }
@@ -33,7 +32,10 @@ class Profile extends React.Component {
 
 export default Profile;
 
+/*
+        <pre>{JSON.stringify(profile, null, 2)}</pre>
 
+*/
 /*
 Common info to store in local User DB
 {

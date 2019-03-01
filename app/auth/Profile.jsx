@@ -21,10 +21,9 @@ class Profile extends React.Component {
 
   render() {
     const { profile } = this.state;
-    const name = profile.given_name || profile.nickname || profile.name;
     return (
       <div>
-        <h4><img src={profile.picture} alt="profile" style={{ maxWidth: '45px', marginRight: '15px' }} /> {name}</h4>
+        <h4><img src={profile.picture} alt="profile" style={{ maxWidth: '45px', marginRight: '15px' }} /> {profile.displayedName}</h4>
       </div>
     );
   }

@@ -184,6 +184,11 @@ class RateContainer extends React.Component {
   saveMarks(savedLocation) {
     logRateContainer.debug(`RateContainer.saveMarks - savedLocation:\n\n${stringifyOnce(savedLocation, null, 2)}`);
 
+    // Every time a user logs in, we send his Auth0 id to the server.
+    // in exchange, the server sends back the mongo db user id so we can send it in the rating calls
+    const userDbId = localStorage.getItem('userDbId');
+    logRateContainer.debug(`userDbId: ${userDbId}`);
+
     const idLocation = savedLocation.place.id;
     const lat = savedLocation.place.location.coordinates[0];
     const lng = savedLocation.place.location.coordinates[1];
@@ -196,6 +201,7 @@ class RateContainer extends React.Component {
       const markIndividual = {
         item: selfLocal.values.item,
         place: idLocation,
+        user: userDbId,
         markOverall: selfLocal.values.markOverall,
         markFood: selfLocal.values.markFood,
         markValue: selfLocal.values.markValue,

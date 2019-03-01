@@ -2,6 +2,8 @@
 
 import * as log from 'loglevel';
 import auth0 from 'auth0-js';
+import 'es6-promise/auto';
+import 'isomorphic-fetch';
 import { loglevelServerSend } from '../utils/loglevel-serverSend';
 import stringifyOnce from '../utils/stringifyOnce';
 import history from '../components/navigation/history'
@@ -42,6 +44,10 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         logAuth.debug(stringifyOnce(authResult, null, 2));
         this.setSession(authResult);
+        this.getProfile((err, profile) => {
+          logAuth.debug(stringifyOnce(profile, null, 2)); 
+          this.sendProfileToServer(profile);
+        });
         history.replace('/');
       } else if (err) {
         history.replace('/');
@@ -103,6 +109,7 @@ export default class Auth {
     history.replace('/');
 
     this.userProfile = null;
+    localStorage.removeItem('user');
   }
 
 
@@ -127,8 +134,38 @@ export default class Auth {
     this.auth0.client.userInfo(accessToken, (err, profile) => {
       if (profile) {
         this.userProfile = profile;
+        profile.authId = profile.sub;
+        profile.displayedName = profile.given_name || profile.nickname || profile.name;
+
+        localStorage.setItem('user', JSON.stringify(profile));
       }
       callback(err, profile);
     });
   }
+
+  sendProfileToServer(profile) {
+    logAuth.debug('{ Auth.sendProfileToServer: ', profile);
+
+    // Call Server to get the user userDbId by giving the authId:
+    fetch('/api/users/addOrUpdateByAuthId', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({user: profile}),
+    })
+    .then(response => response.json())
+    .then((json) => {
+      logAuth.debug('   json result: ', JSON.stringify(json));
+      localStorage.setItem('userDbId', json.user.id)
+    })
+    .catch(() => {
+      logAuth.error('   fetch failed');
+      localStorage.removeItem('userDbId')
+    });    
+
+    logAuth.debug('} Auth.sendProfileToServer');
+
+  }
+
 }

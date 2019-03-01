@@ -1,7 +1,7 @@
 {
 	"server":
 	{
-    "gateway":"https://food-maniac.com",
+    "gateway":"http://localhost:8080",
     "gateway_prod":"https://food-maniac.com",
     "gateway_local":"http://localhost:8080",
 
